@@ -96,6 +96,7 @@ function any_color.paint_node(itemstack, player, pointed_thing)
   local color = any_color.palette_index
   local rotation = 1
   local color_num = 256
+  local mul = 1
   minetest.log("palette_index is "..color)
 
   if paramtype2 == "color" then --nop
