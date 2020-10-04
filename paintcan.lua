@@ -58,7 +58,7 @@ function any_color.show_form(itemstack, player, pointed_thing)
       item = minetest.itemstring_with_palette(node.name, idx)
       idx = idx / mul
       spec[#spec+1] = "item_image["..i..","..j..";1,1;"..item.."]"
-      spec[#spec+1] = "button["..i..","..j..";1,1;"..idx..";foo]"
+      spec[#spec+1] = "button["..i..","..j..";1,1;"..idx..";]"
       i = i + 1
     end
     j = j + 1
