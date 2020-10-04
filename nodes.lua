@@ -15,7 +15,7 @@ function any_color.add_default_palette(nodename)
     minetest.log('warning', "[any_color] Invalid param2type: "..meta.paramtype.." could not set pallete for "..nodename)
     return
   end
-  minetest.log("debug","[any_color] Setting default_palette for "..nodename)
+  minetest.log("verbose","[any_color] Setting default_palette for "..nodename)
   minetest.override_item(nodename, override)
 end
 
