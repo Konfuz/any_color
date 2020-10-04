@@ -69,3 +69,22 @@ green - the mixture of both according to my kindergarden teacher. You cannot
 make it blue no matter how much you want it. You could however define a
 new decolorized mese-texture and make param2 'yellow' by default with 255
 other options remaining.
+
+### Usage
+
+Generally: Just switch it on.
+
+The mod does some default overrides to make alot of stuff colorable out of the
+box. This may not always be desireable (who doesn't like pink aspen trees?)
+and can be disabled in the init.lua
+
+If you are not in creative mode you will need to craft a paint can using
+the shapeless recipe:
+`red, green, blue, yellow, cyan, magenta, white, black and a steel ingot`
+otherwise just grab a can of paint from the creative menu and right-click some
+lightly colored nodes, such as sandstone. The menu will present you the color
+options (if any) that this node has, you select one and then punch the node.
+
+You can punch away on as many nodes as you like, but when that node uses
+a different palette than the node you made your selection the color will be
+whatever that node defined in its palette.
