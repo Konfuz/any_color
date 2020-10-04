@@ -1,6 +1,7 @@
 
 function any_color.add_default_palette(nodename)
   local meta = minetest.registered_nodes[nodename]
+  if meta == nil then return end
   if meta.palette ~= nil then return end
   local override = {}
   minetest.log(nodename.." has paramtype2".. meta.paramtype2)
