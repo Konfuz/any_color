@@ -53,4 +53,19 @@ it may not work before the first use of the airbrush._
 
 **Hint:** If you only want a part of your texture colored do make a copy of the
 texture, replace the part you want colored with alpha and use the new texture
-as an overlay (with `overlay_tiles`) same way you did for the base-texture. 
+as an overlay (with `overlay_tiles`) same way you did for the base-texture.
+
+### Caveats
+
+This mod makes it possible to color nodes that where never designed to be colored
+(not white) this can lead to very interesting visually pleasing results,
+but because of the way hardware coloring works you cant get every color for
+such nodes.
+
+#####For example:
+
+If you overlay a yellow mese block with blue, you will inevitably end up with
+green - the mixture of both according to my kindergarden teacher. You cannot
+make it blue no matter how much you want it. You could however define a
+new decolorized mese-texture and make param2 'yellow' by default with 255
+other options remaining.
