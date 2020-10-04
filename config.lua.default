@@ -1,0 +1,18 @@
+-- DEFAULT copy to config.lua and modify to your liking
+
+any_color.config = {
+  simple_overrides = {
+  'wool:white',
+  'stairs:stair_snowblock',
+  'default:aspen_tree',
+  'default:coral_skeleton',
+  'default:ice',
+  'default:ladder_steel',
+  'default:furnace',
+  'default:silver_sandstone', 'stairs:slab_silver_sandstone',
+  'default:silver_sandstone_block', 'stairs:slab_silver_sandstone_block',
+  'default:silver_sandstone_brick', 'stairs:slab_silver_sandstone_brick',
+  'default:snowblock', 'default:silver_sand','default:stone',
+  'default:sand', 'default:desert_sand'
+  }
+}
