@@ -8,6 +8,8 @@ dofile(modpath..'/util.lua')
 dofile(modpath..'/nodes.lua')
 dofile(modpath..'/paintcan.lua')
 
+-- nodes in this table will be overridden with a default_palette unless
+-- they already have one
 any_color.palette_overrides ={'wool:white','stairs:stair_snowblock'}
 
 for v, k in ipairs(any_color.palette_overrides) do
