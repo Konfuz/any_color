@@ -50,3 +50,7 @@ _In fact this mod should be compatible with all nodes that are already utilizing
 hardware-coloring. It does work for nodes that have been colored by unifieddyes
 though the airbrush does some magic node-switching and paramtype2 setting so
 it may not work before the first use of the airbrush._
+
+**Hint:** If you only want a part of your texture colored do make a copy of the
+texture, replace the part you want colored with alpha and use the new texture
+as an overlay (with `overlay_tiles`) same way you did for the base-texture. 
