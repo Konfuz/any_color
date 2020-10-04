@@ -15,5 +15,5 @@ assert(f ~= nil)
 f() -- load config by executing it
 
 for v, k in ipairs(any_color.config.simple_overrides) do
-  any_color.add_default_palette(k)
+  any_color.add_default_palette(k,{})
 end

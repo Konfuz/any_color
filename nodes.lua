@@ -1,16 +1,17 @@
 
-function any_color.add_default_palette(nodename)
+function any_color.add_default_palette(nodename, override)
   local meta = minetest.registered_nodes[nodename]
-  if meta == nil then return end
-  if meta.palette ~= nil then return end
-  local override = {}
+  if (meta == nil) or (meta.palette ~= nil) then return end
 
   if meta.paramtype2 == "none" then
-    override = {paramtype2="color", palette='any_color_mode13.png'}
+    if override.paramtype2 == nil then override.paramtype2 = "color" end
+    if override.palette == nil then override.palette = 'any_color_mode13.png' end
   elseif meta.paramtype2 == "wallmounted" then
-    override = {paramtype2="colorwallmounted", palette='any_color_mode13_16x2.png'}
+    if override.paramtype2 == nil then override.paramtype2 = "colorwallmounted" end
+    if override.palette == nil then override.palette = 'any_color_mode13_16x2.png' end
   elseif meta.paramtype2 == "facedir" then
-    override = {paramtype2 = "colorfacedir", palette='any_color_mode13_8x1.png'}
+    if override.paramtype2 == nil then override.paramtype2 = "colorfacedir" end
+    if override.palette == nil then override.palette = 'any_color_mode13_8x1.png' end
   else
     minetest.log('warning', "[any_color] Invalid param2type: "..meta.paramtype.." could not set pallete for "..nodename)
     return
