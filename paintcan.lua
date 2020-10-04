@@ -102,8 +102,7 @@ function any_color.paint_node(itemstack, player, pointed_thing)
   local rotation = 1
   local color_num = 256  -- number of colors in the palette
   local mul = 1  -- index muliplicator for smaller, stretched, palettes
-  minetest.log("palette_index is "..color)
-
+  
   if paramtype2 == "color" then --nop
   elseif paramtype2 == "colorfacedir" then
     mul = 32
