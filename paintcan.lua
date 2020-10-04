@@ -24,6 +24,7 @@ function any_color.show_form(itemstack, player, pointed_thing)
     return
   end
 
+  -- next up: generating a Formspec grid
   local col = 1
   local row = 1
   local mul = 1
@@ -42,7 +43,6 @@ function any_color.show_form(itemstack, player, pointed_thing)
 
   local spec = {"size[16,16]",
     "real_coordinates[true]",
-    --"item_image[1,1;1,1;"..item.."]"
   }
   -- because of a bug in item_image_button using transparent
   -- buttons to overlay a normal item_image
@@ -67,15 +67,15 @@ function any_color.show_form(itemstack, player, pointed_thing)
 end
 
 function any_color.on_receive_fields(player, formname, fields)
-  --[[ Button pressed in Color selection Formspec --]]
+  -- If this is not our event, ignore it.
   if not formname == "any_color:paintcan_form_rk" then return end
-  player = player:get_player_name()
+
+  -- search for a pressed button
   local i = 0
   while i < 256 do
-    --minetest.chat_send_player(player, tostring(i))
+
     if not (fields[tostring(i)] == nil) then
       any_color.palette_index = i
-      minetest.chat_send_player(player, "palette index set to ".. i)
       break
     end
     i = i + 1
@@ -83,20 +83,25 @@ function any_color.on_receive_fields(player, formname, fields)
 end
 
 function any_color.paint_node(itemstack, player, pointed_thing)
-  local pos = pointed_thing.under --minetest.get_pointed_thing_position(pointed_thing)
-  if pos == nil then return end
+  -- called on dig (leftclick or shift leftclik)
+  local pos = pointed_thing.under
+  if pos == nil then return end  -- happens whenever you look at the sky
 
   local node = minetest.get_node(pos)
   if not any_color.is_paintable(node) then
     return
   end
   local meta = minetest.registered_nodes[node.name]
+  if meta == nil then
+    minetest.log('warning', node.name.." has no metadata and is probably unregistered at pos "..pos)
+    return
+  end
 
   local paramtype2 = meta.paramtype2
   local color = any_color.palette_index
   local rotation = 1
-  local color_num = 256
-  local mul = 1
+  local color_num = 256  -- number of colors in the palette
+  local mul = 1  -- index muliplicator for smaller, stretched, palettes
   minetest.log("palette_index is "..color)
 
   if paramtype2 == "color" then --nop
@@ -123,18 +128,13 @@ function any_color.paint_node(itemstack, player, pointed_thing)
   minetest.set_node(pos, node)
 end
 
+-- registered as a craftitem because I want it to stack
+-- that way I can turn the paintcan into a consumable later
 minetest.register_craftitem('any_color:paintcan',
   {
     description = "Allows to colorize certain nodes",
     inventory_image = 'paintcan.png',
     wield_image = 'paintbrush.png',
-    --[[tool_capabilities = {
-        full_punch_interval = 0.1,
-        punch_attack_uses = nil,
-        damage_groups = {},
-        node_placement_prediction = "",
-        node_dig_prediction = ""
-    },--]]
     on_use = any_color.paint_node,
     on_place = any_color.show_form,
   }
