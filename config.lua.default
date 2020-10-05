@@ -1,9 +1,16 @@
 -- DEFAULT copy to config.lua and modify to your liking
+-- Has to maintain LUA Table syntax
+-- If you are reading this you probably know what you do...
 
 any_color.config = {
   -- when true EVERYTHING that has param2 free will be colorable
   -- this is "the nuklear option"
   colorize_all = true,
+
+  -- Default palettes to use when overriding
+  default_palette_256 = 'any_color_mode13.png',
+  default_palette_32 = 'any_color_mode13_16x2.png',
+  default_palette_8 = 'any_color_mode13_8x1.png',
 
   -- make these nodes colorable
   -- ignored when colorize_all is set
