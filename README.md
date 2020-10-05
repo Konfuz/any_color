@@ -88,6 +88,11 @@ may want to keep it around to avoid undefined nodes on your map._
 
 Generally: Just switch it on.
 
+**by default the mod has set its option `colorize_all` set for demonstration purposes.**
+I call this _the nuclear option_ because it makes everything colorable that
+can possibly made hardware-colorable. Better switch it off as soon as you are done
+running around coloring stuff like a complete maniac. 
+
 The mod does some default overrides to make alot of stuff colorable out of the
 box. This may not always be desireable (who doesn't like pink aspen trees?)
 and can be disabled in the init.lua and of course you can add your own overrides.
