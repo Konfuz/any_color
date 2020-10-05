@@ -57,9 +57,20 @@ and set an appropriate paramtype2 out of `{"color", "colorwallmounted","colorfac
 
 _In fact this mod should be compatible with all nodes that are already hardware colorized_
 
+- If you make this mod a hard dependency, you can use the provided palettes.  
+
+- Your texture should be white-ish so any color can be slapped on it
+
+
 **Hint:** If you only want a part of your texture colored do make a copy of the
 texture, replace the part you want colored with alpha and use the new texture
 as an overlay (with `overlay_tiles`) same way you did for the base-texture.
+
+This mod primarily is useful to reduce the number of node definitions.
+(looking at _you_ luxury_decor...) At the same time it multiplies your options.
+For example in the texturepack I use default:stone looks like Bark when colored
+in different shades of brown, or like a dense hedge in green colors.
+
 
 ### Caveats
 
@@ -96,14 +107,10 @@ may want to keep it around to avoid undefined nodes on your map._
 
 Generally: Just switch it on.
 
-**by default the mod has set its option `colorize_all` set for demonstration purposes.**
+>**by default the mod has set its option `colorize_all` set for demonstration purposes.**
 I call this _the nuclear option_ because it makes everything colorable that
 can possibly made hardware-colorable. Better switch it off as soon as you are done
 running around coloring stuff like a complete maniac.
-
-The mod does some default overrides to make alot of stuff colorable out of the
-box. This may not always be desireable (who doesn't like pink aspen trees?)
-and can be disabled in the init.lua and of course you can add your own overrides.
 
 If you are not in creative mode you will need to craft a paint can using
 the shapeless recipe:
@@ -116,14 +123,21 @@ You can punch away on as many nodes as you like, but when that node uses
 a different palette the color will be whatever that node defined in its palette.
 
 
-#### For mod authors
+### Config
 
-This mod primarily is useful to reduce the number of node definitions.
-At the same time it multiplies your options. For example in the texturepack I use
-default:stone looks like Bark when colored in different shades of brown, or like
-a dense hedge in green colors.
+If you don't want your entire world to be sodomized by paintbrush wielding baboons
+you can disable `colorize_all` and instead put sensible node-names into the provided
+list. These nodes get a default palette assigned
 
-#### Disabling / Re-enabling the mod
+The config is valid LUA-Code and should not contain syntax-errors.
+
+To make your own config that does not get overridden by possible updates
+copy `config.lua.default` to `config.lua` and modify the latter one.
+Your modification must contain all keys present in the default table
+as the default will only be loaded when `config.lua` is missing.
+
+
+### Disabling / Re-enabling the mod
 
 - Any items that have their own palette defined will remain in their current state.
 - Any item that had a default palette assigned by this mod will visually fall back to its base color.
