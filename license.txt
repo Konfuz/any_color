@@ -1,0 +1,24 @@
+
+License
+=======
+Do whatever the fuck you want. Neither one of us has any obligations.
+If your legislation requires a license this shall be a license. Otherwise
+you can consider the mod public domain.
+
+This statement applies to all contents of this mod unless marked otherwise or included
+in the below list.
+
+Content by other people:
+  - none so far
+
+Authors note
+============
+
+None of this mod would have been possible without thousands if not million
+people that waived rights on their creations. There would be no minetest,
+no linux system for me to work on. No Stackoverflow. No github.
+LUA would not exist and neither would the internet. Even your router runs a linux kernel.
+
+Whenever you create something please consider if you can afford to waive your rights on it.
+Copyrights and Patents are what slows humanity down. They don't protect invention
+they just hinder it in exchange for profit.  
