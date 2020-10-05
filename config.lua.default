@@ -1,6 +1,12 @@
 -- DEFAULT copy to config.lua and modify to your liking
 
 any_color.config = {
+  -- when true EVERYTHING that has param2 free will be colorable
+  -- this is "the nuklear option"
+  colorize_all = true,
+
+  -- make these nodes colorable
+  -- ignored when colorize_all is set
   simple_overrides = {
   'wool:white',
   'stairs:stair_snowblock',
