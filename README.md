@@ -5,7 +5,10 @@ _honestly the progress might converge to zero when I loose intrest._
 ### What is this?
 
 The all_colors mod for minetest allows players and mod-makers to fully utilize the potential
-that hardware-coloring via param2 brings.
+that hardware-coloring via param2 brings. It can even override most nodes that
+don't support hardware-coloring to forcefully make them.
+
+![alt text](doc/img/must_color_stuff.png "Why not make white dandelion purple?")
 
 ### Why is this?
 
@@ -91,7 +94,7 @@ Generally: Just switch it on.
 **by default the mod has set its option `colorize_all` set for demonstration purposes.**
 I call this _the nuclear option_ because it makes everything colorable that
 can possibly made hardware-colorable. Better switch it off as soon as you are done
-running around coloring stuff like a complete maniac. 
+running around coloring stuff like a complete maniac.
 
 The mod does some default overrides to make alot of stuff colorable out of the
 box. This may not always be desireable (who doesn't like pink aspen trees?)
