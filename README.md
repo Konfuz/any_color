@@ -8,7 +8,12 @@ The all_colors mod for minetest allows players and mod-makers to fully utilize t
 that hardware-coloring via param2 brings. It can even override most nodes that
 don't support hardware-coloring to forcefully make them.
 
-![alt text](doc/img/must_color_stuff.png "Why not make white dandelion purple?")
+![alt text](doc/img/must_color_stuff.png "Made white dandelion purple. Sue me.")
+
+Take a white butterfly, make it yellow. Green fire? Sure. Wanna make your main
+shaft ladder look like a unicorn puked on it? Uhmm... you do you.
+
+The mod is not without limitations though so please keep reading.
 
 ### Why is this?
 
