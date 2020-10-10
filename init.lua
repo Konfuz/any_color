@@ -5,7 +5,6 @@ any_color.palette_index = 0 -- Stores currently selected palette index
 local modpath = minetest.get_modpath("any_color")
 
 dofile(modpath..'/util.lua')
-dofile(modpath..'/nodes.lua')
 dofile(modpath..'/paintcan.lua')
 f, err = loadfile(modpath..'/config.lua')
 if f == nil then
