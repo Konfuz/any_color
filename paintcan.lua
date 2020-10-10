@@ -1,10 +1,15 @@
 
 function any_color.show_form(itemstack, player, pointed_thing)
-  if not pointed_thing.type == "node" then
+  --[[Generate Formspec for color selection on pointed_thing and show it.
+    Right click calls this back.
+  --]]
+
+  -- Init stuff and sanity checks
+  if not player or not pointed_thing or not pointed_thing.type == "node" then
     return
   end
   local player = player:get_player_name()
-  local pos = pointed_thing.under --minetest.get_pointed_thing_position(pointed_thing)
+  local pos = pointed_thing.under
   local node = minetest.get_node(pos)
   local meta = minetest.registered_nodes[node.name]
   local item = nil  -- Itemstring
@@ -27,15 +32,18 @@ function any_color.show_form(itemstack, player, pointed_thing)
   -- next up: generating a Formspec grid
   local col = 1
   local row = 1
-  local mul = 1
+  local mul = 1 -- multiplicator to shift bits to most significant
+  -- 8 color mode layout
   if meta.paramtype2 == "colorfacedir" then
     col = 8
     row = 1
     mul = 32
+  -- 32 color mode layout
   elseif meta.paramtype2 == "colorwallmounted" then
     col = 16
     row = 2
     mul = 8
+  -- 256 mode layout
   else
     col = 16
     row = 16
@@ -54,9 +62,8 @@ function any_color.show_form(itemstack, player, pointed_thing)
   while j < row do
     i = 0
     while i < col do
-      idx = (16*j+i) * mul
-      item = minetest.itemstring_with_palette(node.name, idx)
-      idx = idx / mul
+      idx = 16*j+i
+      item = minetest.itemstring_with_palette(node.name, idx * mul)
       spec[#spec+1] = "item_image["..i..","..j..";1,1;"..item.."]"
       spec[#spec+1] = "button["..i..","..j..";1,1;"..idx..";]"
       i = i + 1
@@ -67,6 +74,11 @@ function any_color.show_form(itemstack, player, pointed_thing)
 end
 
 function any_color.on_receive_fields(player, formname, fields)
+  --[[ Callback for the color selection dialogue
+  --]]
+
+  -- obligatory sanity check
+  if not player or not formname or not fields then return end
   -- If this is not our event, ignore it.
   if not formname == "any_color:paintcan_form_rk" then return end
 
@@ -83,7 +95,12 @@ function any_color.on_receive_fields(player, formname, fields)
 end
 
 function any_color.paint_node(itemstack, player, pointed_thing)
-  -- called on dig (leftclick or shift leftclik)
+  --[[ Apply currently selected palette index to pointed_thing
+      Called on leftclick
+    ]]
+
+  -- obligatory sanity check
+  if not player or not pointed_thing then return end
   local pos = pointed_thing.under
   if pos == nil then return end  -- happens whenever you look at the sky
 
@@ -102,7 +119,7 @@ function any_color.paint_node(itemstack, player, pointed_thing)
   local rotation = 1
   local color_num = 256  -- number of colors in the palette
   local mul = 1  -- index muliplicator for smaller, stretched, palettes
-  
+
   if paramtype2 == "color" then --nop
   elseif paramtype2 == "colorfacedir" then
     mul = 32
