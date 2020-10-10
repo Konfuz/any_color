@@ -141,6 +141,6 @@ as the default will only be loaded when `config.lua` is missing.
 
 - Any items that have their own palette defined will remain in their current state.
 - Any item that had a default palette assigned by this mod will visually fall back to its base color.
-- no nodes - (apart from testnodes) should become unregistered.
+- no nodes should become unregistered.
 - As long as no one else uses the param2 of any given node for something else,
   it will regain its color upon reactivation of this mod.
