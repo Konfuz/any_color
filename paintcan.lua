@@ -12,6 +12,7 @@ function any_color.show_form(itemstack, player, pointed_thing)
   local pos = pointed_thing.under
   local node = minetest.get_node(pos)
   local meta = minetest.registered_nodes[node.name]
+  if meta == nil then return end --unregistered node
 
   -- Allows to copy a nodes index on shift-rightclick
   if player:is_player() and player:get_player_control()['sneak'] then
