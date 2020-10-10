@@ -8,10 +8,19 @@ function any_color.show_form(itemstack, player, pointed_thing)
   if not player or not pointed_thing or not pointed_thing.type == "node" then
     return
   end
-  local player = player:get_player_name()
+
   local pos = pointed_thing.under
   local node = minetest.get_node(pos)
   local meta = minetest.registered_nodes[node.name]
+
+  -- Allows to copy a nodes index on shift-rightclick
+  if player:is_player() and player:get_player_control()['sneak'] then
+    local index = minetest.strip_param2_color(node.param2, meta['paramtype2'])
+    player:get_meta():set_int('_any_color_index',index)
+    return
+  end
+
+  local player = player:get_player_name()
   local item = nil  -- Itemstring
   local msg = ""
   if type(meta) ~= 'table' then
@@ -86,8 +95,8 @@ function any_color.on_receive_fields(player, formname, fields)
   local i = 0
   while i < 256 do
 
-    if not (fields[tostring(i)] == nil) then
-      any_color.palette_index = i
+    if not (fields[tostring(i)] == nil) and player:is_player() then
+      player:get_meta():set_int('_any_color_index', i)
       break
     end
     i = i + 1
@@ -115,7 +124,7 @@ function any_color.paint_node(itemstack, player, pointed_thing)
   end
 
   local paramtype2 = meta.paramtype2
-  local color = any_color.palette_index
+  local color = player:get_meta():get_int('_any_color_index') or 0
   local rotation = 1
   local color_num = 256  -- number of colors in the palette
   local mul = 1  -- index muliplicator for smaller, stretched, palettes
