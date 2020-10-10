@@ -1,5 +1,9 @@
 function any_color.is_paintable(node)
-  return minetest.registered_nodes[node.name].palette ~= nil
+  if node == nil then return
+  elseif node.name == nil then return
+  elseif minetest.registered_nodes[node.name] == nil then return
+  else return minetest.registered_nodes[node.name].palette ~= nil
+  end
 end
 
 function any_color.dump(o)
