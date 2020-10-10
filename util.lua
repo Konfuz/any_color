@@ -23,25 +23,28 @@ function any_color.add_default_palette(nodename, override)
   local meta = minetest.registered_nodes[nodename]
   if (meta == nil) or (meta.palette ~= nil) then return false end
 
+  -- use given override otherwise choose own param
+  or_param2 = override.paramtype2 == nil
+  or_palette = override.palette == nil
   if meta.paramtype2 == "none" then
-    if override.paramtype2 == nil then
+    if or_param2 then
       override.paramtype2 = "color"
     end
-    if override.palette == nil then
+    if or_palette then
       override.palette = any_color.config.default_palette_256
     end
   elseif meta.paramtype2 == "wallmounted" then
-    if override.paramtype2 == nil then
+    if or_param2 then
       override.paramtype2 = "colorwallmounted"
     end
-    if override.palette == nil then
+    if or_palette then
       override.palette = any_color.config.default_palette_32
     end
   elseif meta.paramtype2 == "facedir" then
-    if override.paramtype2 == nil then
+    if or_param2 then
       override.paramtype2 = "colorfacedir"
     end
-    if override.palette == nil then
+    if or_palette then
       override.palette = any_color.config.default_palette_8
     end
   else
