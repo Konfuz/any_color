@@ -4,7 +4,7 @@
 
 any_color.config = {
   -- when true EVERYTHING that has param2 free will be colorable
-  -- this is "the nuklear option"
+  -- this is "the nuclear option"
   colorize_all = true,
 
   -- Default palettes to use when overriding
