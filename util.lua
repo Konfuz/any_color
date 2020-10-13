@@ -28,8 +28,8 @@ function any_color.add_default_palette(nodename, override)
   if (meta == nil) or (meta.palette ~= nil) then return false end
 
   -- use given override otherwise choose own param
-  or_param2 = override.paramtype2 == nil
-  or_palette = override.palette == nil
+  local or_param2 = (override.paramtype2 == nil)
+  local or_palette = (override.palette == nil)
   if meta.paramtype2 == "none" then
     if or_param2 then
       override.paramtype2 = "color"
