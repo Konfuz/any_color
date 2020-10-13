@@ -8,7 +8,7 @@ any_color.config = {
   colorize_all = true,
 
   -- Default palettes to use when overriding
-  default_palette_256 = 'any_color_mode13_bright.png',
+  default_palette_256 = 'any_color_mode13_bright_1_white.png',
   default_palette_32 = 'any_color_mode13_bright_16x2.png',
   default_palette_8 = 'any_color_mode13_bright_8x1.png',
 
