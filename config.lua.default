@@ -1,10 +1,12 @@
 -- DEFAULT copy to config.lua and modify to your liking
--- Has to maintain LUA Table syntax
+-- Has to maintain LUA Table syntax (its a bit annoying TBH)
 -- If you are reading this you probably know what you do...
 
 any_color.config = {
-  -- when true EVERYTHING that has param2 free will be colorable
-  -- this is "the nuclear option"
+  --[[ when true EVERYTHING that has param2 free will be colorable
+       unless it is on the blacklist.
+       This is "the nuclear option"
+  ]]
   colorize_all = true,
 
   -- Default palettes to use when overriding
@@ -12,20 +14,32 @@ any_color.config = {
   default_palette_32 = 'any_color_mode13_bright_16x2.png',
   default_palette_8 = 'any_color_mode13_bright_8x1.png',
 
-  -- make these nodes colorable
-  -- ignored when colorize_all is set
-  simple_overrides = {
-  'wool:white',
-  'stairs:stair_snowblock',
-  'default:aspen_tree',
-  'default:coral_skeleton',
-  'default:ice',
-  'default:ladder_steel',
-  'default:furnace',
-  'default:silver_sandstone', 'stairs:slab_silver_sandstone',
-  'default:silver_sandstone_block', 'stairs:slab_silver_sandstone_block',
-  'default:silver_sandstone_brick', 'stairs:slab_silver_sandstone_brick',
-  'default:snowblock', 'default:silver_sand','default:stone',
-  'default:sand', 'default:desert_sand'
-  }
-}
+  --[[ overrides allow specifing patterns of nodes that shall be forced
+       to be colorable with a default palette. The items can be either the nodename
+       as a string, or a table of {nodename, override_table} allowing to pass
+       specific overrides to minetest.override_item(nodename, override_table)
+       for example: {'default:stone', {palette="any_color_8_bit_palette.png"} will
+       set a different palette for stone. You can use this to apply you own
+       textures that are easier to color, or texture overlays to exclude regions
+       from coloring!
+
+       Patterns as used by LUA's string.find() are permitted.
+       "Magic" characters ( ) . % + - * ? [ ^ $ must be escaped by %
+
+  ]]
+  overrides = {
+    "default:stone*",
+    --{'default:stone', {palette="any_color_8_bit_palette.png"}},
+  },
+
+  --[[ Allows to exclude nodes from coloring
+       Patterns as used by LUA's string.find() are permitted.
+       "Magic" characters ( ) . % + - * ? [ ^ $ must be escaped by %
+  ]]
+  blacklist = {
+  'default:sign_*',
+  'basic_signs:*',
+  },
+
+
+} -- end of config

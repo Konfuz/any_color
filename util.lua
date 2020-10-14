@@ -26,6 +26,7 @@ function any_color.add_default_palette(nodename, override)
   -- Returns false on error
   local meta = minetest.registered_nodes[nodename]
   if (meta == nil) or (meta.palette ~= nil) then return false end
+  if any_color.blacklist[nodename] then return false end
 
   -- use given override otherwise choose own param
   local or_param2 = (override.paramtype2 == nil)
@@ -57,4 +58,15 @@ function any_color.add_default_palette(nodename, override)
   end
   minetest.log("verbose","[any_color] Setting default_palette for "..nodename)
   return minetest.override_item(nodename, override)
+end
+
+-- build blacklist of nodes that must not be colored according to config
+any_color.blacklist = {}
+
+for k, pattern in pairs(any_color.config.blacklist) do
+  for nodename, meta in pairs(minetest.registered_nodes) do
+    if not any_color.blacklist[nodename] and string.find(nodename, pattern) then
+      any_color.blacklist[nodename] = true
+    end
+  end
 end

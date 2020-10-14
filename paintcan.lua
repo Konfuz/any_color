@@ -17,7 +17,8 @@ function any_color.show_form(itemstack, player, pointed_thing)
   -- Allows to copy a nodes index on shift-rightclick
   if player:is_player() and player:get_player_control()['sneak'] then
     local index = minetest.strip_param2_color(node.param2, meta['paramtype2'])
-    player:get_meta():set_int('_any_color_index',index)
+    if index == nil then return end
+    player:get_meta():set_int('_any_color_index', index)
     return
   end
 

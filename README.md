@@ -91,9 +91,13 @@ version of the texture which may look better or worse but rarely the same.
 
 ### Compatibility
 
-- Currently there are no hard issues known
-- mods that override the usage of param2 are a hypothetical problem but only if
-  they do it carelessly
+- mods that use param2 without declaring it in paramtype2 are an issue
+- Any `signs_lib` based signs such as `basic_signs` need to be blacklisted
+  since the mod does some math that relies on the node being of type facedir
+  instead of colorfacedir.  
+- leaves and farming mods tend to use param2 but only out of [0,1] so using a
+  palette where param2 = 1 = 0 = white circumvents the issue of miscolored plants
+  and leaves. The default 256 palette has been adapted accordingly.  
 
 _It can work for nodes that have been colored by unifieddyes
 though the airbrush does some magic node-switcheroos and paramtype2 setting so
