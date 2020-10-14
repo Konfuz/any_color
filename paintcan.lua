@@ -14,8 +14,8 @@ function any_color.show_form(itemstack, player, pointed_thing)
   local meta = minetest.registered_nodes[node.name]
   if meta == nil then return end --unregistered node
 
-  -- Allows to copy a nodes index on shift-rightclick
-  if player:is_player() and player:get_player_control()['sneak'] then
+  -- Allows to copy a nodes index on zoom-rightclick
+  if player:is_player() and player:get_player_control()['zoom'] then
     local index = minetest.strip_param2_color(node.param2, meta['paramtype2'])
     if index == nil then return end
     player:get_meta():set_int('_any_color_index', index)
