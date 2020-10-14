@@ -133,12 +133,23 @@ If you don't want your entire world to be sodomized by paintbrush wielding baboo
 you can disable `colorize_all` and instead put sensible node-names into the provided
 list. These nodes get a default palette assigned
 
-The config is valid LUA-Code and should not contain syntax-errors.
+**The config is valid LUA-Code and MUST NOT contain syntax-errors.**
 
 To make your own config that does not get overridden by possible updates
 copy `config.lua.default` to `config.lua` and modify the latter one.
 Your modification must contain all keys present in the default table
 as the default will only be loaded when `config.lua` is missing.
+
+You can specify more complex overrides to nodes by entering the parameters for
+[minetest.override_item(name, redefinition)](https://minetest.gitlab.io/minetest/minetest-namespace-reference/) yourself.
+
+You can blacklist nodes if you want to exclude them explicitly.
+
+Both blacklist and override support Patterns. See the [LUA Documentation](https://www.lua.org/pil/20.2.html)
+You can just give the nodename so long as it does not contain *magic* characters
+out of  `( ) . % + - * ? [ ^ $ `. You can excape these with an (additional) `%`.
+In most cases just using the wildcard `*` - for example to select a certain mod -
+should suffice. e.g. `my_mod:*` would exclude/include all contents of your mod.
 
 
 ### Disabling / Re-enabling the mod
