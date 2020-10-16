@@ -56,6 +56,15 @@ function any_color.add_default_palette(nodename, override)
     minetest.log('warning', "[any_color] Invalid param2type: "..meta.paramtype.." could not set pallete for "..nodename)
     return false
   end
+
+  -- Make param2 disappear on pickup so items stack
+  if not any_color.config.keep_color then
+    if not override['drop'] then
+      override['drop'] = nodename
+    end
+  end
+
+
   minetest.log("verbose","[any_color] Setting default_palette for "..nodename)
   return minetest.override_item(nodename, override)
 end

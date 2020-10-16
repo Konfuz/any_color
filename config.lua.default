@@ -8,6 +8,7 @@ any_color.config = {
        This is "the nuclear option"
   ]]
   colorize_all = true,
+  keep_color = false,  --If on items in inventory retain their color and do not stack with other colors
 
   -- Default palettes to use when overriding
   default_palette_256 = 'any_color_mode13_bright_1_white.png',
