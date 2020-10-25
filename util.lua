@@ -25,6 +25,7 @@ function any_color.add_default_palette(nodename, override)
   -- sets up nodename with a fitting default palette if possible
   -- Returns false on error
   local meta = minetest.registered_nodes[nodename]
+
   if (meta == nil) or (meta.palette ~= nil) then return false end
   if any_color.blacklist[nodename] then return false end
 
@@ -59,7 +60,7 @@ function any_color.add_default_palette(nodename, override)
 
   -- Make param2 disappear on pickup so items stack
   if not any_color.config.keep_color then
-    if not override['drop'] then
+    if not meta['drop'] then
       override['drop'] = nodename
     end
   end
