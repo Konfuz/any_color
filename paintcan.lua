@@ -159,7 +159,7 @@ end
 -- that way I can turn the paintcan into a consumable later
 minetest.register_craftitem('any_color:paintcan',
   {
-    description = "Allows to colorize certain nodes",
+    description = "Paintcan: Right-Click to select color, (shift-)left-click to apply",
     inventory_image = 'paintcan.png',
     wield_image = 'paintbrush.png',
     on_use = any_color.paint_node,
