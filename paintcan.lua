@@ -152,7 +152,7 @@ function any_color.paint_node(itemstack, player, pointed_thing)
   color = color % color_num -- user might have an invalid color on his brush
   color = color * mul + rotation
   node['param2'] = color
-  minetest.set_node(pos, node)
+  minetest.swap_node(pos, node)
 end
 
 -- registered as a craftitem because I want it to stack
