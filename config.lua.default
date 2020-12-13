@@ -38,9 +38,9 @@ any_color.config = {
        "Magic" characters ( ) . % + - * ? [ ^ $ must be escaped by %
   ]]
   blacklist = {
-  'default:sign_*',
-  'basic_signs:*',
-  'signs*',
+  --'default:sign_*',
+  --'basic_signs:*',
+  --'signs*',
   'farming:*'
   },
 
